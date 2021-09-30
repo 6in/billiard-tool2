@@ -382,6 +382,6 @@ span {
 }
 
 .toggle-buttons{
-  width: 1000px;
+  width: 700px;
 }
 </style>
