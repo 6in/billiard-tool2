@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="view-ball">
         <svg width="400" height="400">
             <circle :cx="cx" :cy="cy" :r="r" fill="rgba(255,255,255,0.5)"/>
             <circle :cx="ob.cx" :cy="cy" :r="r" fill="rgba(255,255,0,0.5)"/>
@@ -168,5 +168,9 @@ export default {
 <style scoped>
 svg {
     background: gray;
+}
+.view-ball {
+  width: 400px;
+  height: 400px;
 }
 </style>

@@ -159,7 +159,7 @@
                 <flex-box direction="row">
                   <flex-item>
                     <flex-box direction="column">
-                      <flex-item>
+                      <flex-item class="ball-view">
                         <!-- 厚み表示 -->
                         <thick-ball
                           :degree="gb2cbDegree"
@@ -167,7 +167,7 @@
                           @thickPercent="onThickPercent"
                         />
                       </flex-item>
-                      <flex-item>
+                      <flex-item class="ball-view">
                         <!-- コンタクトポイント -->
                         <contact-point
                           :degree="gb2cbDegree"
@@ -383,5 +383,10 @@ span {
 
 .toggle-buttons{
   width: 700px;
+}
+
+.ball-view {
+  width: 400px;
+  height: 400px;
 }
 </style>
