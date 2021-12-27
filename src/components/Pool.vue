@@ -150,6 +150,17 @@
         stroke-dasharray="4 4"
       ></line>
 
+      <!-- ナチュラルアングル -->
+      <line
+        :x1="gb.cx"
+        :y1="gb.cy"
+        :x2="na.cx"
+        :y2="na.cy"
+        stroke="black"
+        stroke-width="1"
+        stroke-dasharray="8 8"
+      ></line>
+
       <g v-if="ob2cb_disp">
         <line
           :x1="ob.cx"
@@ -234,6 +245,9 @@ export default {
     ob: {
       type: Object,
     },
+    na: {
+      type: Object,
+    }
   },
   computed: {
     r() {
