@@ -1,6 +1,6 @@
 <template>
     <div class="view-ball">
-        <svg width="400" height="400">
+        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
             <circle :cx="ob.cx" :cy="ob.cy" :r="r" fill="yellow"/>
             <circle :cx="cx" :cy="cy" :r="r" fill="white"/>
 
@@ -130,13 +130,16 @@ export default {
 </script>
 
 <style scoped>
-svg {
-    background: gray;
-}
-
 .view-ball {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
+svg {
+  background: gray;
+  width: 100%;
+  height: auto;
+  display: block;
+}
 </style>

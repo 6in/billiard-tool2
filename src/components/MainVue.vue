@@ -4,71 +4,71 @@
       <flex-item class="toggle-buttons">
         <flex-box align-items="center" wrap="wrap">
           <flex-item>
-            ボールサイズ:<input
+            <span class="label">ボールサイズ:</span><input
               type="range"
               v-model="r"
               min="8.0"
               max="12"
               step="0.1"
-              style="width: 100px"
+              class="range-input"
             />
           </flex-item>
           <flex-item>
-            タップ:{{ tapSize }}mm<input
+            <span class="label">タップ:{{ tapSize }}mm</span><input
               type="range"
               v-model="tapSize"
               min="12"
               max="20"
               step="0.1"
-              style="width: 100px"
+              class="range-input"
             />
           </flex-item>
           <flex-item>
-            見下ろし角度:<input
+            <span class="label">見下ろし角度:</span><input
               type="range"
               v-model="phi"
               min="0.1"
               max="1.5"
               step="0.01"
-              style="width: 100px"
+              class="range-input"
             />
           </flex-item>
-          <flex-item>
+          <flex-item class="toggle-item">
             <toggle-button
               :labels="{ checked: 'ズームON', unchecked: 'ズームOFF' }"
               v-model="zoom"
               :width="100"
             />
           </flex-item>
-          <flex-item>
+          <flex-item class="toggle-item">
             <toggle-button
               :labels="{ checked: 'GB表示', unchecked: 'GB非表示' }"
               v-model="showGB"
               :width="100"
             />
           </flex-item>
-          <flex-item>
+          <flex-item class="toggle-item">
             <toggle-button
               :labels="{ checked: 'GB中心', unchecked: '的球中心' }"
               v-model="lookAtGb"
               :width="100"
             />
           </flex-item>
-          <flex-item>
+          <flex-item class="toggle-item">
             <toggle-button
               :labels="{ checked: 'Train On', unchecked: 'Train Off' }"
               v-model="trainBalls"
               :width="100"
             />
           </flex-item>
-          <flex-item>
+          <flex-item class="toggle-item">
             <toggle-button
               :labels="{ checked: 'Guide On', unchecked: 'Guide Off' }"
               v-model="betweenLine"
               :width="100"
             />
           </flex-item>
-          <flex-item>
+          <flex-item class="toggle-item">
             <toggle-button
               :labels="{ checked: 'Scroll Lock', unchecked: 'Scroll Unlock' }"
               v-model="scrollLock"
@@ -78,7 +78,7 @@
         </flex-box>
       </flex-item>
       <flex-item>
-        <flex-box v-if="!isSmartPhone">
+        <flex-box direction="column">
           <flex-item>
             <!-- 2D 表示 -->
             <pool
@@ -96,93 +96,26 @@
             ></pool>
           </flex-item>
           <flex-item>
-            <flex-box direction="column">
-              <flex-item style="width: 800px">
-                <flex-box>
-                  <flex-item>
-                    <!-- 厚み表示 -->
-                    <thick-ball
-                      :degree="gb2cbDegree"
-                      :tap-size="tapSize"
-                      @thickPercent="onThickPercent"
-                    />
-                  </flex-item>
-                  <flex-item>
-                    <!-- コンタクトポイント -->
-                    <contact-point
-                      :degree="gb2cbDegree"
-                      :dispDegree="getDegree()"
-                    />
-                  </flex-item>
-                </flex-box>
-              </flex-item>
-              <flex-item style="width: 800px">
-                <!-- 3D 表示 -->
-                <gl-panel
-                  ref="gl_panel"
-                  :radius="r"
-                  :cb="cb"
-                  :gb="gb"
-                  :ob="ob"
-                  :pk="pk"
+            <flex-box class="analysis-row">
+              <flex-item class="ball-view">
+                <!-- 厚み表示 -->
+                <thick-ball
                   :degree="gb2cbDegree"
-                  :lookAtGb="lookAtGb"
-                  :is-zoom="zoom"
-                  :showGB="showGB"
-                  :phi="phi"
-                  :trainBalls="trainBalls"
-                  :betweenLine="betweenLine"
-                ></gl-panel>
+                  :tap-size="tapSize"
+                  @thickPercent="onThickPercent"
+                />
+              </flex-item>
+              <flex-item class="ball-view">
+                <!-- コンタクトポイント -->
+                <contact-point
+                  :degree="gb2cbDegree"
+                  :dispDegree="getDegree()"
+                />
               </flex-item>
             </flex-box>
           </flex-item>
-        </flex-box>
-
-        <flex-box v-if="isSmartPhone" direction="column">
-          <flex-item>
-            <flex-box>
-              <flex-item>
-                <!-- 2D 表示 -->
-                <pool
-                  ref="pool"
-                  :cb="cb"
-                  :ob="ob"
-                  :pk="pk"
-                  :radius="r"
-                  :na="naturalAngle"
-                  @moveBall="onMoveBall"
-                  @degreeGB2CB="onDegreeGB2CB"
-                  @selectPocket="onSelectPocket"
-                  @setGB="onSetGB"
-                  @moveEnd="onMoveEnd"
-                ></pool>
-              </flex-item>
-              <flex-item>
-                <flex-box direction="row">
-                  <flex-item>
-                    <flex-box direction="column">
-                      <flex-item class="ball-view">
-                        <!-- 厚み表示 -->
-                        <thick-ball
-                          :degree="gb2cbDegree"
-                          :tap-size="tapSize"
-                          @thickPercent="onThickPercent"
-                        />
-                      </flex-item>
-                      <flex-item class="ball-view">
-                        <!-- コンタクトポイント -->
-                        <contact-point
-                          :degree="gb2cbDegree"
-                          :dispDegree="getDegree()"
-                        />
-                      </flex-item>
-                    </flex-box>
-                  </flex-item>
-                </flex-box>
-              </flex-item>
-            </flex-box>
-          </flex-item>
-          <flex-item style="width: 800px">
+          <flex-item class="gl-panel-container">
+            <!-- 3D 表示 -->
             <gl-panel
               ref="gl_panel"
               :radius="r"
@@ -212,9 +145,6 @@ import FlexBox from "./FlexBox";
 import FlexItem from "./FlexItem";
 import ThickBall from "./ThickBall";
 import GlPanel from "./GlPanel";
-import isMobile from "ismobilejs";
-
-let isMobileResult = isMobile(window.navigator)
 
 function handleTouchMove(event) {
   event.preventDefault();
@@ -367,8 +297,6 @@ export default {
         cx: 0,
         cy: 0
       },
-      isSmartPhone: isMobileResult.phone,
-      // isSmartPhone: true,
       r: "8.0",
       gb2cbDegree: 0,
       thick: 0,
@@ -517,30 +445,52 @@ li {
 a {
   color: #42b983;
 }
-pool {
-  width: 400px;
-  height: 800px;
-}
 .hello {
   margin: 0px;
+  width: 100%;
 }
 
-input {
-  font-size: 20px;
-  width: 30%;
+input[type="range"] {
+  font-size: 16px;
+  width: 80px;
   text-align: right;
 }
 
-span {
-  font-size: 20px;
+.label {
+  font-size: 14px;
+  white-space: nowrap;
 }
 
-.toggle-buttons{
-  width: 700px;
+span {
+  font-size: 14px;
+}
+
+.toggle-buttons {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.toggle-item {
+  margin: 4px;
+}
+
+.range-input {
+  margin-left: 4px;
+}
+
+.analysis-row {
+  width: 100%;
+  justify-content: space-around;
 }
 
 .ball-view {
-  width: 400px;
-  height: 400px;
+  width: 50%;
+  min-width: 150px;
+  max-width: 400px;
+}
+
+.gl-panel-container {
+  width: 100%;
 }
 </style>
