@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <svg ref="svg" width="400" height="800">
+  <div class="pool-container">
+    <svg ref="svg" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid meet">
       <g>
         <g>
           <line
@@ -440,7 +440,16 @@ export default {
 </script>
 
 <style scoped>
+.pool-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 svg {
   background: green;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 </style>

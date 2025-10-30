@@ -1,6 +1,6 @@
 <template>
-  <div ref="gldiv" class="hello">
-    <vgl-renderer antialias style="height: 400px;" :shadow-map-enabled="true" :disable-depth="false">
+  <div ref="gldiv" class="gl-container">
+    <vgl-renderer antialias class="gl-renderer" :shadow-map-enabled="true" :disable-depth="false">
         <vgl-scene>
           <!-- 利用できるオブジェクト -->
 
@@ -386,6 +386,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.gl-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gl-renderer {
+  width: 100%;
+  height: 50vh;
+  min-height: 300px;
+  max-height: 600px;
+}
+
 h1, h2 {
   font-weight: normal;
 }
