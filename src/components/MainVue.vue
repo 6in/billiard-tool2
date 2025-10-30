@@ -434,7 +434,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr 1fr 250px;
+  grid-template-rows: 2fr 3fr 3fr 3fr;
   gap: 4px;
   padding: 4px;
   overflow: hidden;
@@ -445,7 +445,6 @@ export default {
   grid-row: 1;
   padding: 4px;
   overflow-y: auto;
-  max-height: 100px;
 }
 
 .pool-area {
