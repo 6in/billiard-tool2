@@ -388,15 +388,15 @@ export default {
 <style scoped>
 .gl-container {
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .gl-renderer {
   width: 100%;
-  height: 50vh;
-  min-height: 300px;
-  max-height: 600px;
+  height: 100%;
+  flex: 1;
 }
 
 h1, h2 {

@@ -442,14 +442,16 @@ export default {
 <style scoped>
 .pool-container {
   width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 svg {
   background: green;
-  width: 100%;
-  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   display: block;
 }
 </style>
